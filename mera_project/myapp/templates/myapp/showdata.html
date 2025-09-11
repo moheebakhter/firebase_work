@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Data in Table</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background: linear-gradient(135deg, #ece9e6, #ffffff);
+        }
+        h2 {
+            color: #222;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #eaeaea;
+            text-align: left;
+            font-size: 15px;
+        }
+        th {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) td {
+            background-color: #f9fbff;
+        }
+        tr:hover td {
+            background-color: #f1f7ff;
+            transition: background 0.3s ease;
+        }
+        td {
+            color: #444;
+        }
+        .no-data {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Contact Information</h2>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
+        </tr>
+
+        {% for abc in con %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ abc.Name }}</td>
+            <td>{{ abc.Email }}</td>
+            <td>{{ abc.Subject }}</td>
+            <td>{{ abc.Msg }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="no-data">No Record Found</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
