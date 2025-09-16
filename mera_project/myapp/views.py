@@ -28,7 +28,12 @@ def Showdata(request):
     Contact = []
     for a in mydata:
         convert_dict = a.to_dict()
+        convert_dict["id"] = a.id   # 👈 document ID bhi add kiya
         Contact.append(convert_dict)
 
-    # yahan loop complete hone ke baad return
     return render(request, "myapp/showdata.html", {"con": Contact})
+
+
+def delete_contact(request, id):
+    db.collection("contact").document(id).delete()
+    return redirect("show")

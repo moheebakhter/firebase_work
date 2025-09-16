@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
   path("",views.contacts, name="con"),
   path('show', views.Showdata, name="show"),
+  path("delete/<str:id>/", views.delete_contact, name="delete"),
 ]
